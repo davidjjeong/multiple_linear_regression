@@ -38,6 +38,8 @@ perf_mat
 ```
 
 Load "Toyota Corolla" Dataset (corolla):
+
+There are a total of 1436 observations with 37 variables.
 ```{r load-dataset-1}
 corolla <- read.csv("ToyotaCorolla.csv")
 corolla
