@@ -1,0 +1,31 @@
+---
+title: "R01_Multiple_Linear_Regression"
+author: "David Jeong"
+date: '2022-05-15'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Multiple Linear Regression
+
+```{r install-packages}
+install.packages("moments")
+library(moments)
+```
+Constructing Performance Evaluation Function for Regression:
+```{r perf-eval-func}
+perf_eval_reg <- function(tgt_y, pred_y){
+  # RMSE
+  rmse <- sqrt(mean((tgt_y - pred_y)^2))
+  # MAE
+  mae <- mean(abs((tgt_y - pred_y)/tgt_y))
+  # MAPE
+  mape <- 100*mean(abs((tgt_y - pred_y)/tgt_y))
+  
+  return(c(rmse, mae, mape))
+}
+```
+
