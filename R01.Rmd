@@ -29,3 +29,17 @@ perf_eval_reg <- function(tgt_y, pred_y){
 }
 ```
 
+Initialize Performance Summary:
+```{r init-perf-summ}
+perf_mat <- matrix(0, nrow=2, ncol=3)
+rownames(perf_mat) <- c("Toyota Corolla", "Boston Housing")
+colnames(perf_mat) <- c("RMSE", "MAE", "MAPE")
+perf_mat
+```
+
+Load "Toyota Corolla" Dataset (corolla):
+```{r load-dataset-1}
+corolla <- read.csv("ToyotaCorolla.csv")
+corolla
+```
+
