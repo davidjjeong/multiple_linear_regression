@@ -134,3 +134,18 @@ plot(mlr_boston)
 plot(boston_trn_data$MEDV, fitted(mlr_boston),
      xlim = c(-5, 50), ylim = c(-5, 50))
 abline(0, 1, lty=3)
+
+# Normality Test of Residuals
+boston_resid <- resid(mlr_boston)
+
+m <- mean(boston_resid)
+std <- sqrt(var(boston_resid))
+
+hist(boston_resid, density=20, breaks=50, prob=TRUE,
+     xlab="x-variable", main="normal curve over histogram")
+
+curve(dnorm(x, mean=m, sd=std),
+      col = "darkblue", lwd=2, add=TRUE, yaxt="n")
+
+skewness(boston_resid)
+kurtosis(boston_resid)
