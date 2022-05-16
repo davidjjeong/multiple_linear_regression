@@ -149,3 +149,9 @@ curve(dnorm(x, mean=m, sd=std),
 
 skewness(boston_resid)
 kurtosis(boston_resid)
+
+# Performance Measure
+mlr_boston_haty <- predict(mlr_boston, newdata = boston_tst_data)
+
+perf_mat[2,] <- perf_eval_reg(boston_tst_data$MEDV, mlr_boston_haty)
+perf_mat
