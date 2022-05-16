@@ -21,3 +21,7 @@ perf_mat <- matrix(0, nrow=2, ncol=3)
 rownames(perf_mat) <- c("Toyota Corolla", "Boston Housing")
 colnames(perf_mat) <- c("RMSE", "MAE", "MAPE")
 perf_mat
+
+# Dataset 1: Toyota Corolla
+corolla <- read.csv("ToyotaCorolla.csv")
+View(corolla)
