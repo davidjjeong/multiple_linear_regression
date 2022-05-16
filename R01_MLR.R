@@ -68,3 +68,9 @@ set.seed(12345)
 corolla_trn_idx <- sample(1:nCar, round(0.7*nCar)) # Training Dataset: 70%
 corolla_trn_data <- corolla_mlr_data[corolla_trn_idx,]
 corolla_tst_data <- corolla_mlr_data[-corolla_trn_idx,] # Test Dataset: 30%
+
+# Train the MLR
+mlr_corolla <- lm(Price ~ ., data = corolla_trn_data)
+mlr_corolla
+summary(mlr_corolla)
+plot(mlr_corolla)
