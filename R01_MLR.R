@@ -123,3 +123,9 @@ set.seed(12345)
 boston_trn_idx <- sample(1:nHome, round(0.7*nHome))
 boston_trn_data <- boston_housing[boston_trn_idx,]
 boston_tst_data <- boston_housing[-boston_trn_idx,]
+
+# Train the MLR
+mlr_boston <- lm(MEDV ~ ., data = boston_trn_data)
+mlr_boston
+summary(mlr_boston)
+plot(mlr_boston)
