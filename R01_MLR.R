@@ -22,7 +22,7 @@ rownames(perf_mat) <- c("Toyota Corolla", "Boston Housing")
 colnames(perf_mat) <- c("RMSE", "MAE", "MAPE")
 perf_mat
 
-# Dataset 1: Toyota Corolla
+# Dataset 1: Toyota Corolla ----------------------------------------------------
 corolla <- read.csv("ToyotaCorolla.csv")
 View(corolla)
 
@@ -101,3 +101,25 @@ mlr_corolla_haty <- predict(mlr_corolla, newdata = corolla_tst_data)
 
 perf_mat[1,] <- perf_eval_reg(corolla_tst_data$Price, mlr_corolla_haty)
 perf_mat
+
+# Dataset 2: Boston Housing ----------------------------------------------------
+boston_housing <- read.csv("BostonHousing.csv")
+View(boston_housing)
+
+boston_names <- colnames(boston_housing)[-ncol(boston_housing)]
+
+par(mfrow = c(3, 4))
+for(i in 1:length(boston_names)){
+  plot(MEDV ~ boston_housing[,i], data = boston_housing, 
+       xlab = boston_names[i])
+}
+dev.off()
+
+nHome <- nrow(boston_housing)
+nVar <- ncol(boston_housing)
+
+# Split the data into training/validation sets
+set.seed(12345)
+boston_trn_idx <- sample(1:nHome, round(0.7*nHome))
+boston_trn_data <- boston_housing[boston_trn_idx,]
+boston_tst_data <- boston_housing[-boston_trn_idx,]
