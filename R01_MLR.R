@@ -25,3 +25,12 @@ perf_mat
 # Dataset 1: Toyota Corolla
 corolla <- read.csv("ToyotaCorolla.csv")
 View(corolla)
+
+# Indices for Inactivated Input Variables
+id_idx <- c(1, 2)
+
+# Hence Remove Irrelevant Columns
+corolla_data <- corolla[, -id_idx]
+
+# Remove Categorical Data (Fuel Type)
+plot_data <- corolla_data[, -6]
