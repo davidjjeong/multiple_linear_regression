@@ -33,4 +33,15 @@ id_idx <- c(1, 2)
 corolla_data <- corolla[, -id_idx]
 
 # Remove Categorical Data (Fuel Type)
+# Check linearity between X variables and Y variable
 plot_data <- corolla_data[, -6]
+corolla_names <- colnames(plot_data)[-1]
+
+par(mfrow=c(5,7))
+par(mar=c(3,3,3,3))
+for(i in 1:length(corolla_names)){
+  plot(Price ~ plot_data[,i+1], data = plot_data,
+       xlab = corolla_names[i])
+}
+dev.off()
+
