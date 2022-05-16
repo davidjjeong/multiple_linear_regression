@@ -74,3 +74,24 @@ mlr_corolla <- lm(Price ~ ., data = corolla_trn_data)
 mlr_corolla
 summary(mlr_corolla)
 plot(mlr_corolla)
+
+# Plot the result
+plot(corolla_trn_data$Price, fitted(mlr_corolla),
+     xlim = c(4000, 35000), ylim = c(4000, 35000),
+     xlab = "Observed Price", ylab = "Predicted Price")
+abline(0, 1, lty=3)
+
+# Normality Test of Residuals
+corolla_resid <- resid(mlr_corolla)
+
+m <- mean(corolla_resid)
+std <- sqrt(var(corolla_resid))
+
+hist(corolla_resid, density=20, breaks=50, prob=TRUE,
+     xlab="x-variable", main="normal curve over histogram")
+
+curve(dnorm(x, mean=m, sd=std),
+      col="darkblue", lwd=2, add=TRUE, yaxt="n")
+
+skewness(corolla_resid)
+kurtosis(corolla_resid)
