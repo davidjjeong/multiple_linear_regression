@@ -95,3 +95,9 @@ curve(dnorm(x, mean=m, sd=std),
 
 skewness(corolla_resid)
 kurtosis(corolla_resid)
+
+# Performance Measure
+mlr_corolla_haty <- predict(mlr_corolla, newdata = corolla_tst_data)
+
+perf_mat[1,] <- perf_eval_reg(corolla_tst_data$Price, mlr_corolla_haty)
+perf_mat
