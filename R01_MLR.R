@@ -47,3 +47,14 @@ dev.off()
 
 # One outlier exists for cc variable
 cc_outlier <- which(plot_data$cc > 15000)
+
+# Select some linearly related variables with "Price"
+plot_data_selected <- plot_data[-cc_outlier, c(1,2,4,5,6,9,13,14)]
+corolla_names <- colnames(plot_data_selected)[-1]
+
+par(mfrow=c(2, 4))
+for(i in 1:length(corolla_names)){
+  plot(Price ~ plot_data_selected[,i+1], data = plot_data_selected,
+       xlab = corolla_names[i])
+}
+dev.off()
