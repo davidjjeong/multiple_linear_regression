@@ -129,3 +129,8 @@ mlr_boston <- lm(MEDV ~ ., data = boston_trn_data)
 mlr_boston
 summary(mlr_boston)
 plot(mlr_boston)
+
+# Plot the result
+plot(boston_trn_data$MEDV, fitted(mlr_boston),
+     xlim = c(-5, 50), ylim = c(-5, 50))
+abline(0, 1, lty=3)
