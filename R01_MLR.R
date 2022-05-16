@@ -58,3 +58,13 @@ for(i in 1:length(corolla_names)){
        xlab = corolla_names[i])
 }
 dev.off()
+
+# Split data into training/validation sets
+corolla_mlr_data <- corolla_data[-cc_outlier,]
+nCar <- nrow(corolla_mlr_data)
+
+# Fix seed for random number generation
+set.seed(12345)
+corolla_trn_idx <- sample(1:nCar, round(0.7*nCar)) # Training Dataset: 70%
+corolla_trn_data <- corolla_mlr_data[corolla_trn_idx,]
+corolla_tst_data <- corolla_mlr_data[-corolla_trn_idx,] # Test Dataset: 30%
