@@ -45,3 +45,5 @@ for(i in 1:length(corolla_names)){
 }
 dev.off()
 
+# One outlier exists for cc variable
+cc_outlier <- which(plot_data$cc > 15000)
